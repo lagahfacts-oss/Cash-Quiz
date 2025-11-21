@@ -940,23 +940,8 @@
     };
 
     // NEW: Function to load the Ad Network SDK dynamically
-    const loadAdSdk = (scriptUrl, zoneId) => {
-        if (!scriptUrl || !zoneId) { 
-            console.warn("Ad Network config missing. Cannot load SDK."); 
-            return; 
-        }
-        // Avoid loading twice if using the same zone id/script url
-        if (document.querySelector(`script[src='${scriptUrl}']`)) return; 
-        
-        const script = document.createElement('script');
-        script.src = scriptUrl;
-        script.setAttribute('data-zone', zoneId);
-        // This attribute is critical for the ad network to define its global function
-        script.setAttribute('data-sdk', `show_${zoneId}`); 
-        script.async = true;
-        document.body.appendChild(script);
-        console.log(`Ad SDK loaded: ${scriptUrl}`);
-    };
+    // ** MODIFIED: SDK Loader Removed/Commented Out as Direct Link is used **
+    // const loadAdSdk = (scriptUrl, zoneId) => { ... }; 
     
     // NEW: TON Connect UI Global Variable
     let tonConnectUI = null;
@@ -1476,40 +1461,35 @@
             for (let i = 0; i < 50; i++) { createConfetti(); }
         };
 
-        // ** ACTUAL Ad Call Logic (Monetag Integration) **
+        // ** MODIFIED: AD LOGIC - DIRECT LINK IMPLEMENTATION **
         const showAdAndCallback = (callback, context) => {
-            const adZoneId = appState.config.adNetworkZoneId;
-            // NOTE: The Ad Network SDK is loaded with this specific function name in the global window object.
-            const adFunction = window[`show_${adZoneId}`];
+            // Use the Direct Link provided or fallback to config
+            const directLink = appState.config.adDirectLink || "https://otieu.com/4/10213737";
             
-            if (typeof adFunction !== 'function') {
-                // MODIFIED: Bengali Alert
-                tg.showAlert("বিজ্ঞাপন লোড হতে পারেনি। অ্যাডমিন প্যানেলে কনফিগারেশন চেক করুন বা কয়েক সেকেন্ড অপেক্ষা করে আবার চেষ্টা করুন।");
-                callback(false);
-                return;
-            }
-
-            // 1. Loading/Waiting Popup দেখানো (Bengali Popup)
-            // MODIFIED: Using showQuizLoader for the 9-dot spinner effect
+            // 1. Show loading indicator
             showQuizLoader("বিজ্ঞাপন লোড হচ্ছে...");
 
-            // 2. আসল অ্যাড কল করা
+            // 2. Open the Direct Link
             try {
+                // Try to use Telegram WebApp specific method if available, else fallback to window.open
+                if (window.Telegram && window.Telegram.WebApp) {
+                    window.Telegram.WebApp.openLink(directLink);
+                } else {
+                    window.open(directLink, '_blank');
+                }
                 
-                // IMPORTANT: In a real Monetag implementation, you might need to use a specific callback system,
-                // but for this standard SDK emulation, we rely on a timeout and confirmation.
-                adFunction(); 
-                
-                // Simulating a fixed time wait for the ad view
+                // 3. Simulate Ad Watch Time & Grant Reward
+                // Since we cannot track user behavior on external sites easily with direct links,
+                // we simulate a delay and then assume success.
                 setTimeout(() => {
                     closeGeneralPopup();
                     callback(true); // Simulate successful ad view
-                }, AD_SIMULATION_TIME_MS);
-                
+                }, 5000); // 5 seconds delay to allow user to switch/return
+
             } catch (error) {
                  closeGeneralPopup();
                  // MODIFIED: Bengali Alert
-                 tg.showAlert(`অ্যাড কল করতে ব্যর্থ: ${error.message || 'অজানা ত্রুটি'}`);
+                 tg.showAlert(`লিঙ্ক খুলতে ব্যর্থ: ${error.message || 'অজানা ত্রুটি'}`);
                  callback(false);
             }
         };
@@ -1611,8 +1591,7 @@
                     referralBonus: REFERRAL_BONUS_COINS,
                     botUsername: 'cashquizbdbot', // Fixed bot name
                     plinkoBuckets: [100, 80, 60, 40, 20, 40, 60, 80, 100], 
-                    adNetworkScriptUrl: 'https://libtl.com/sdk.js', 
-                    adNetworkZoneId: '10186059', 
+                    adDirectLink: 'https://otieu.com/4/10213737', // ** MODIFIED: Direct Link added here **
                     PLINKO_DAILY_AD_TOKEN_LIMIT: PLINKO_DAILY_AD_TOKEN_LIMIT, 
                     ADS_PER_PLINKO_TOKEN: ADS_PER_PLINKO_TOKEN, 
                 };
@@ -1623,7 +1602,8 @@
                 await handleReferralLogic(); // Await referral logic to ensure state is finalized
                 
                 // Load Ad SDK using config from DB
-                loadAdSdk(appState.config.adNetworkScriptUrl, appState.config.adNetworkZoneId);
+                // ** MODIFIED: SDK Load Removed for Direct Link Implementation **
+                // loadAdSdk(appState.config.adNetworkScriptUrl, appState.config.adNetworkZoneId);
 
                 // NEW: Setup TON Connect UI
                 setupTonConnectUI();
