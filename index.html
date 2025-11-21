@@ -687,9 +687,10 @@
                         <div id="quiz-actions">
                             <!-- Next Quiz button is shown after answer -->
                             <!-- UPDATED: Added (Watch Ad) to be explicit -->
-                            <button id="quiz-next-btn" class="action-btn" style="display:none;">Next Quiz (Watch Ad)</button>
-                            <!-- MODIFIED: Button text changed to "Back to Home" -->
-                            <button id="quiz-back-btn" class="action-btn">Back to Home</button>
+                            <!-- CHANGED: Replaced "Next Quiz (Watch Ad)" with "Next" -->
+                            <button id="quiz-next-btn" class="action-btn" style="display:none;">Next</button>
+                            <!-- MODIFIED: Button text changed to "Back" -->
+                            <button id="quiz-back-btn" class="action-btn">Back</button>
                         </div>
                     </div>
                 </div>
@@ -726,22 +727,28 @@
                     <h3>💸 TON Wallet</h3>
                     
                     <!-- START NEW: Official Channel and Rules Block -->
-                    <div style="text-align: center; margin-bottom: 25px; padding: 15px; border: 1px dashed var(--secondary-color); border-radius: 10px; background-color: var(--background);">
-                        <p style="color: var(--secondary-color); font-weight: 600; margin-bottom: 10px;"><i class="fas fa-exclamation-triangle"></i> উইথড্রয়ালের জন্য গুরুত্বপূর্ণ নিয়মাবলী:</p>
-                        <p style="margin-bottom: 5px; font-size: 0.9rem;">
-                            <i class="fas fa-check-circle" style="color: var(--success);"></i> আপনাকে আমাদের অফিসিয়াল চ্যানেলে অবশ্যই যোগ দিতে হবে, না হলে আপনি লিস্টিং-এ যুক্ত হবেন না ❗
+                    <div style="text-align: left; margin-bottom: 25px; padding: 15px; border: 1px dashed var(--secondary-color); border-radius: 10px; background-color: var(--background);">
+                        <p style="color: var(--secondary-color); font-weight: 700; margin-bottom: 12px; font-size: 1rem; text-align: center;"><i class="fas fa-bullhorn"></i> উইথড্রয়ালের জন্য গুরুত্বপূর্ণ নিয়মাবলী</p>
+                        
+                        <p style="margin-bottom: 8px; font-size: 0.9rem;">
+                            1️⃣ অফিসিয়াল চ্যানেলে অবশ্যই জয়েন থাকতে হবে। চ্যানেলে জয়েন ছাড়া উইথড্র রিকোয়েস্ট গ্রহণ করা হবে না।
                         </p>
-                        <p style="margin-bottom: 10px; font-size: 0.9rem;">
-                            <i class="fas fa-users" style="color: var(--primary-color);"></i> যাদেরকে রেফার করবেন, তারাও অ্যাক্টিভ থাকতে হবে—অ্যাক্টিভ না থাকলে লিস্টিং হবে না 👥
+                        <p style="margin-bottom: 8px; font-size: 0.9rem;">
+                            2️⃣ রেফার করা ইউজাররা অ্যাক্টিভ থাকতে হবে। আপনি যাদের রেফার করবেন, তারা যদি অ্যাক্টিভ না থাকে—তাহলে উইথড্র পাবেন না।
                         </p>
-                        <p style="margin-bottom: 15px; font-size: 0.9rem; color: var(--danger); font-weight: 600;">
-                            <i class="fas fa-ban"></i> ⚠️ একটি মোবাইল ফোন দিয়ে শুধুমাত্র একটি আইডি খোলা যাবে। এর বেশি আইডি খুললে অ্যাকাউন্ট ব্যান হয়ে যাবে 🚫📵
+                        <p style="margin-bottom: 8px; font-size: 0.9rem; color: var(--danger); font-weight: 600;">
+                            3️⃣ একটি মোবাইল ফোন = একটি একাউন্ট। একটি ডিভাইস দিয়ে একের বেশি আইডি খুললে আপনার অ্যাকাউন্ট ব্যান হয়ে যাবে।
+                        </p>
+                        <p style="margin-bottom: 8px; font-size: 0.9rem; color: var(--secondary-color); font-weight: 600;">
+                            4️⃣ Ads দেখে ৫–১০ সেকেন্ড অপেক্ষা করুন। উইথড্র পেতে হলে অবশ্যই এডস চলার সময় ৫–১০ সেকেন্ড অপেক্ষা করতে হবে।
                         </p>
                         
-                        <a href="https://t.me/cashquizbd" target="_blank" class="action-btn" style="width: 90%; padding: 12px; font-size: 1rem; margin-top: 10px;">
-                            🔗 এখনই আমাদের অফিসিয়াল চ্যানেলে যোগ দিন👇
-                            <!-- MODIFIED: Button text should be "জয়ান অফিসিয়াল চ্যানেল" as requested -->
-                            <!-- 🔗 এখনই আমাদের অফিসিয়াল চ্যানেলে যোগ দিন👇 -->
+                        <p style="margin-top: 12px; font-size: 0.9rem; text-align: center; color: var(--success); font-weight: 700;">
+                            ✨ নিয়ম ঠিকভাবে অনুসরণ করলে আপনার উইথড্র ১০০% সফল হবে।
+                        </p>
+                        
+                        <a href="https://t.me/cashquizbd" target="_blank" class="action-btn" style="width: 100%; padding: 12px; font-size: 1rem; margin-top: 15px; display: block; text-align: center; text-decoration: none;">
+                            Join Official Channel
                         </a>
                     </div>
                     <!-- END NEW BLOCK -->
@@ -764,7 +771,7 @@
                         
                         <!-- MODIFIED: Exchange View (Always visible if connected) -->
                         <div id="exchange-view" class="exchange-view" style="display:none;">
-                             <h4 style="color:var(--primary-color); margin-bottom: 20px;">Coin to USDT Exchange</h4>
+                             <h4 style="color:var(--primary-color); margin-bottom: 20px;">Exchange Page</h4>
                              <div class="exchange-display">
                                  <div class="exchange-circle">
                                      <span id="exchange-coin-amount">0.000</span>
@@ -787,7 +794,7 @@
 
                         <!-- MODIFIED: Withdrawal Final View (Always visible if connected) -->
                         <div id="withdraw-final-view" class="withdraw-final-view" style="display:none;">
-                            <h4>Withdraw USDT</h4>
+                            <h4>Withdraw Page</h4>
                             <img src="https://i.ibb.co.com/k2R105DF/AIRetouch-20251118-063831848.png" alt="USDT Icon" style="width: 40px; height: 40px; margin-bottom: 15px;" />
                             
                             <p id="current-usdt-balance" style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary);">0.00 USDT Available</p>
@@ -2110,25 +2117,14 @@
             }
 
             // MODIFIED: Explicitly show ad text on button
-            nextBtn.textContent = 'Next Quiz (Watch Ad)'; // English Button Text
+            nextBtn.textContent = 'Next'; // English Button Text (MODIFIED AS REQUESTED)
             nextBtn.style.display = 'block';
             
             // NEW: Guiding alert to fix user confusion
-            tg.showAlert("উত্তর যাচাই করা হয়েছে। পরবর্তী কুইজ লোড করার জন্য 'Next Quiz (Watch Ad)' বাটনে ক্লিক করুন।");
+            tg.showAlert("উত্তর যাচাই করা হয়েছে। পরবর্তী কুইজ লোড করার জন্য 'Next' বাটনে ক্লিক করুন।");
             
-            nextBtn.onclick = () => {
-                nextBtn.disabled = true;
-                showAdAndCallback((isAdSuccess) => {
-                    nextBtn.disabled = false;
-                    if (isAdSuccess) {
-                        // Start the next unlimited quiz
-                        startQuiz(); 
-                    } else {
-                         // MODIFIED: Bengali Alert
-                         tg.showAlert("অ্যাড ব্যর্থ হয়েছে। পুনরায় চেষ্টা করুন।");
-                    }
-                }, 'quiz_next');
-            };
+            // ** IMPORTANT FIX: Removed onclick here to prevent multiple bindings. 
+            // The binding is now in setupEventListeners
         };
 
         // FIXED: Back button logic to show ad and go home
@@ -2290,6 +2286,20 @@
             // REMOVED: document.getElementById('buy-ticket-btn').addEventListener('click', handleBuyTicket); 
             // NEW: Attach back button ad logic
             document.getElementById('quiz-back-btn').addEventListener('click', handleQuizBack); 
+            
+            // ** NEW FIX: Attach NEXT button logic here for robustness **
+            document.getElementById('quiz-next-btn').addEventListener('click', () => {
+                const nextBtn = document.getElementById('quiz-next-btn');
+                nextBtn.disabled = true;
+                showAdAndCallback((isAdSuccess) => {
+                    nextBtn.disabled = false;
+                    if (isAdSuccess) {
+                        startQuiz(); // Load next question
+                    } else {
+                         tg.showAlert("অ্যাড ব্যর্থ হয়েছে। পুনরায় চেষ্টা করুন।");
+                    }
+                }, 'quiz_next');
+            });
             
             // NEW: Wallet/Withdrawal Listeners
             exchangeInput.addEventListener('input', updateExchangeEstimate);
